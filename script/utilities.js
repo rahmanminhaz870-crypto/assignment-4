@@ -1,13 +1,20 @@
 function getCount(id) {
-    return Number(document.getElementById(id).innerText);
+    const element = document.getElementById(id);
+    return element ? Number(element.innerText) : 0;
 }
 
 function setCount(id, value) {
-    document.getElementById(id).innerText = value;
+    const element = document.getElementById(id);
+    if (element) {
+        element.innerText = value;
+    }
 }
 
 function toggleTabUI(activeTab) {
     const allTabs = document.querySelectorAll('.tab');
     allTabs.forEach(tab => tab.classList.remove('tab-active'));
-    document.getElementById(tab - $ { activeTab }).classList.add('tab-active');
+    const activeBtn = document.getElementById(`tab-${activeTab}`);
+    if (activeBtn) {
+        activeBtn.classList.add('tab-active');
+    }
 }
